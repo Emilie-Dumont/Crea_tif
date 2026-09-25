@@ -1,0 +1,641 @@
+/* =====================================================================
+   CREA'TIFS — DESIGN CAPILL'HAIR
+   Feuille de style — identité "kitsch pro" (glam, disco, salon capillaire)
+   Construit par-dessus Bootstrap 4 (grille + composants de base conservés)
+   ===================================================================== */
+
+/* ---- 0. Polices auto-hébergées (aucune dépendance réseau le jour de l'examen) ---- */
+@font-face {
+  font-family: "Bungee";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/bungee-latin-400-normal.woff2") format("woff2"),
+       url("../fonts/bungee-latin-400-normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../fonts/poppins-latin-300-normal.woff2") format("woff2"),
+       url("../fonts/poppins-latin-300-normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/poppins-latin-400-normal.woff2") format("woff2"),
+       url("../fonts/poppins-latin-400-normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/poppins-latin-400-italic.woff2") format("woff2"),
+       url("../fonts/poppins-latin-400-italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/poppins-latin-500-normal.woff2") format("woff2"),
+       url("../fonts/poppins-latin-500-normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/poppins-latin-600-normal.woff2") format("woff2"),
+       url("../fonts/poppins-latin-600-normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/poppins-latin-700-normal.woff2") format("woff2"),
+       url("../fonts/poppins-latin-700-normal.woff") format("woff");
+}
+
+/* ---- 1. Tokens : palette, typo, formes ---- */
+:root {
+  --magenta: #ff2e93;
+  --magenta-deep: #b81368; /* variante foncée : utilisée partout où du texte doit rester lisible (AA) */
+  --violet: #7c3aed;
+  --gold: #ffc93c;
+  --cyan: #22d3ee;
+  --ink: #1b0b2e;
+  --cream: #fff8f0;
+  --pink-soft: #ffe4f2;
+  --white: #ffffff;
+
+  --gradient-glam: linear-gradient(120deg, var(--magenta) 0%, var(--violet) 100%);
+  --gradient-gold: linear-gradient(120deg, var(--gold) 0%, var(--magenta) 100%);
+
+  --radius-lg: 26px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+
+  --shadow-hard: 6px 6px 0 var(--ink);
+  --shadow-hard-sm: 4px 4px 0 var(--ink);
+  --shadow-hard-xs: 3px 3px 0 var(--ink);
+
+  --border-thick: 3px solid var(--ink);
+  --border-thin: 2px solid var(--ink);
+}
+
+/* ---- 2. Base ---- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-top: 64px;
+  background: var(--cream);
+  font-family: "Poppins", -apple-system, "Segoe UI", sans-serif;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, .ct-display {
+  font-family: "Bungee", "Poppins", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  color: var(--ink);
+}
+
+a {
+  color: var(--violet);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--magenta-deep);
+}
+
+hr {
+  border: none;
+  border-top: 3px dashed rgba(27, 11, 46, 0.15);
+  margin: 2rem 0;
+}
+
+/* Focus visible clavier — accessibilité conservée malgré le style */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px dashed var(--gold);
+  outline-offset: 2px;
+}
+
+/* Icônes décoratives inline (ciseaux, étincelles) */
+.ct-scissors {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  flex-shrink: 0;
+}
+
+.ct-spark {
+  fill: currentColor;
+  position: absolute;
+  opacity: 0.5;
+}
+
+/* ---- 3. Navbar ---- */
+.ct-navbar {
+  background: var(--ink) !important;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 4px solid var(--magenta);
+}
+
+.ct-navbar .navbar-brand {
+  font-family: "Bungee", sans-serif;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(100deg, var(--gold), var(--magenta) 55%, var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: normal;
+}
+
+.ct-navbar .navbar-brand .ct-scissors {
+  color: var(--gold);
+  -webkit-text-fill-color: initial;
+}
+
+.ct-navbar .nav-link {
+  font-weight: 600;
+  color: var(--cream) !important;
+  position: relative;
+  margin-right: 0.5rem;
+}
+
+.ct-navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.2s ease;
+}
+
+.ct-navbar .nav-link:hover::after,
+.ct-navbar .nav-item.active .nav-link::after {
+  width: 100%;
+}
+
+.ct-navbar .navbar-toggler {
+  border-color: var(--gold);
+}
+
+/* ---- 4. Hero (bandeau d'intro) ---- */
+.ct-hero {
+  background: var(--gradient-glam);
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 0 4.5rem;
+  margin-bottom: -2.5rem;
+}
+
+.ct-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1.5px, transparent 1.6px);
+  background-size: 26px 26px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.ct-hero::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+  opacity: 0.45;
+  border-radius: 50%;
+  right: -80px;
+  top: -120px;
+  pointer-events: none;
+}
+
+.ct-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.ct-hero h1 {
+  color: var(--white);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  text-shadow: var(--shadow-hard-sm);
+  margin-bottom: 0.5rem;
+}
+
+.ct-hero p {
+  color: var(--cream);
+  font-size: 1.1rem;
+  max-width: 46ch;
+  opacity: 0.9;
+}
+
+.ct-hero .ct-spark {
+  color: var(--white);
+}
+
+/* ---- 5. Cartes contenu (fiche projet dans la liste) ---- */
+.ct-content-wrap {
+  position: relative;
+  z-index: 2;
+  background: var(--cream);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding-top: 2rem;
+}
+
+.ct-card {
+  background: var(--white);
+  border: var(--border-thick);
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 6px;
+  box-shadow: var(--shadow-hard);
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ct-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.ct-card img {
+  border: var(--border-thin);
+  border-radius: var(--radius-md);
+  transform: rotate(-2deg);
+}
+
+.ct-card:nth-of-type(even) img {
+  transform: rotate(2deg);
+}
+
+.ct-card h3 {
+  font-size: 1.35rem;
+  margin-top: 0.5rem;
+}
+
+.ct-byline {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--violet);
+  margin-bottom: 0.75rem;
+}
+
+.ct-byline a {
+  color: var(--magenta-deep);
+  border-bottom: 2px solid var(--gold);
+}
+
+/* ---- 6. Boutons ---- */
+.ct-btn {
+  font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0.4px;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  border: var(--border-thin);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: var(--shadow-hard-xs);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.ct-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--ink);
+  text-decoration: none;
+}
+
+.ct-btn--primary {
+  background: var(--gradient-gold);
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.ct-btn--ghost {
+  background: var(--white);
+  color: var(--ink);
+}
+
+.ct-btn--ghost:hover {
+  background: var(--pink-soft);
+  color: var(--ink);
+}
+
+.ct-btn--danger {
+  background: var(--white);
+  color: var(--magenta-deep);
+  border-color: var(--magenta-deep);
+}
+
+.ct-btn--danger:hover {
+  background: var(--magenta-deep);
+  color: var(--white);
+}
+
+.ct-btn--sm {
+  font-size: 0.7rem;
+  padding: 0.4rem 0.9rem;
+}
+
+/* ---- 7. Tags / chips ---- */
+.ct-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ct-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  background: var(--pink-soft);
+}
+
+.ct-tags li:nth-child(4n+1) .ct-tag { background: var(--pink-soft); }
+.ct-tags li:nth-child(4n+2) .ct-tag { background: #ffe9ad; }
+.ct-tags li:nth-child(4n+3) .ct-tag { background: #cdeaff; }
+.ct-tags li:nth-child(4n+4) .ct-tag { background: #e2d9ff; }
+
+.ct-tag:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
+/* ---- 8. Pagination ---- */
+.ct-pagination .page-link {
+  font-family: "Bungee", sans-serif;
+  font-size: 0.8rem;
+  color: var(--ink);
+  border: var(--border-thin);
+  border-radius: var(--radius-sm) !important;
+  margin: 0 4px;
+  background: var(--white);
+}
+
+.ct-pagination .page-item.active .page-link {
+  background: var(--gradient-glam);
+  color: var(--white);
+  border-color: var(--ink);
+}
+
+.ct-pagination .page-link:hover {
+  background: var(--gold);
+}
+
+/* ---- 9. Sidebar ---- */
+.ct-side-card {
+  background: var(--white);
+  border: var(--border-thick);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hard-sm);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.ct-side-card__head {
+  background: var(--ink);
+  color: var(--white);
+  font-family: "Bungee", sans-serif;
+  font-size: 1rem;
+  padding: 0.85rem 1.1rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ct-side-card__body {
+  padding: 1.1rem;
+}
+
+.ct-creatif-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ct-creatif-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0;
+  border-bottom: 2px dashed rgba(27, 11, 46, 0.12);
+}
+
+.ct-creatif-list li:last-child {
+  border-bottom: none;
+}
+
+.ct-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--ink);
+  flex-shrink: 0;
+}
+
+.ct-count {
+  margin-left: auto;
+  background: var(--gold);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.1rem 0.5rem;
+}
+
+/* Profil créatif (page détail) */
+.ct-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ct-profile img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--ink);
+}
+
+.ct-profile p {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  color: #4a3a5a;
+}
+
+/* ---- 10. Formulaires ---- */
+.ct-form-card {
+  background: var(--white);
+  border: var(--border-thick);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-hard);
+  padding: 2rem;
+}
+
+.ct-form-card label {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ct-form-card label::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--magenta);
+  display: inline-block;
+}
+
+.ct-form-card .form-control {
+  border: var(--border-thin);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.9rem;
+  height: auto;
+  margin-bottom: 1.2rem;
+}
+
+.ct-form-card .form-control:focus {
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.25);
+  border-color: var(--violet);
+}
+
+.ct-form-card select.form-control {
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%),
+    linear-gradient(135deg, var(--ink) 50%, transparent 50%);
+  background-position: calc(100% - 20px) center, calc(100% - 15px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Zone de dépôt fichier stylisée (input natif conservé, juste redécoré) */
+.ct-dropzone {
+  border: 2px dashed var(--violet);
+  border-radius: var(--radius-md);
+  background: var(--pink-soft);
+  padding: 1.2rem;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.ct-dropzone input[type="file"] {
+  margin-top: 0.6rem;
+}
+
+.ct-tag-choice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+
+.ct-tag-choice label {
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--white);
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.ct-tag-choice input {
+  accent-color: var(--magenta);
+}
+
+/* ---- 11. Footer ---- */
+.ct-footer {
+  background: var(--ink) !important;
+  position: relative;
+  padding-top: 2.5rem;
+}
+
+.ct-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--magenta), var(--gold), var(--cyan), var(--violet));
+}
+
+.ct-footer p a {
+  color: var(--gold);
+}
+
+/* ---- 12. Responsive ---- */
+@media (max-width: 767px) {
+  .ct-hero { padding: 2.5rem 0 3rem; }
+  .ct-form-card { padding: 1.25rem; }
+  .ct-card { padding: 1.1rem; }
+}
+
+/* ---- 13. Respect des préférences de mouvement réduit ---- */
+@media (prefers-reduced-motion: reduce) {
+  .ct-card, .ct-btn, html {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .ct-card img, .ct-card:nth-of-type(even) img {
+    transform: none;
+  }
+}

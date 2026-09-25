@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="CREA'TIFS - détail d'un projet" />
+    <meta name="author" content="" />
+
+    <title>Frange Kamikaze — CREA'TIFS</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Polices Bungee + Poppins : auto-hébergées, voir css/creatifs.css -->
+
+    <!-- Styles CREA'TIFS -->
+    <link href="css/creatifs.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top ct-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <svg class="ct-scissors" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="6" cy="6" r="2.6"></circle>
+            <circle cx="6" cy="18" r="2.6"></circle>
+            <line x1="20" y1="3" x2="8" y2="15.5"></line>
+            <line x1="8" y1="8.5" x2="20" y2="21"></line>
+          </svg>
+          CREA'TIFS
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto align-items-lg-center">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Les projets</a>
+            </li>
+            <li class="nav-item">
+              <a class="ct-btn ct-btn--primary ct-btn--sm" href="form.html">
+                <svg class="ct-scissors" style="width:16px;height:16px" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="6" cy="6" r="2.6"></circle>
+                  <circle cx="6" cy="18" r="2.6"></circle>
+                  <line x1="20" y1="3" x2="8" y2="15.5"></line>
+                  <line x1="8" y1="8.5" x2="20" y2="21"></line>
+                </svg>
+                Nouveau projet
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contenu -->
+    <div class="container" style="margin-top: 2.5rem">
+      <div class="row">
+        <!-- Colonne principale -->
+        <div class="col-lg-8">
+          <h1>Frange Kamikaze</h1>
+          <p class="ct-byline">par <a href="#">Mister Univ'Hair</a> · 17 août 2017</p>
+
+          <div class="mb-4">
+            <!-- routes: /projets/id/slug/edit/form.html — /projets/delete/id/slug.html -->
+            <a href="form.html" class="ct-btn ct-btn--primary">Éditer le projet</a>
+            <a href="#" class="ct-btn ct-btn--danger" onclick="return confirm('Supprimer définitivement ce projet ?');">Supprimer le projet</a>
+          </div>
+
+          <article class="ct-card">
+            <div class="row">
+              <div class="col-md-6">
+                <img class="img-fluid mb-3 mb-md-0" src="images/1.jpg" alt="Frange Kamikaze" />
+              </div>
+              <div class="col-md-6">
+                <p class="lead" style="font-weight: 600">
+                  Une frange tracée au feutre noir, parce que la vraie audace ne pousse pas en un jour.
+                </p>
+                <hr />
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam
+                  dolorum sed, consequatur, beatae veritatis, laboriosam soluta
+                  expedita aliquid quam, cupiditate non. Maiores, itaque
+                  repudiandae. Maiores dolorum eligendi, aut ipsam officia.
+                </p>
+                <hr />
+                <ul class="ct-tags">
+                  <li><a class="ct-tag" href="#">Vintage</a></li>
+                  <li><a class="ct-tag" href="#">Abstract</a></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Colonne latérale -->
+        <div class="col-lg-4">
+          <!-- Profil du créa'tif -->
+          <div class="ct-side-card">
+            <h5 class="ct-side-card__head">Le créa'tif</h5>
+            <div class="ct-side-card__body">
+              <div class="ct-profile">
+                <img src="images/creatif_1.jpg" alt="Mister Univ'Hair" />
+                <div>
+                  <strong><a href="#">Mister Univ'Hair</a></strong>
+                  <p>Sculpteur capillaire depuis 15 ans, spécialiste des délires assumés.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gestion des tags -->
+          <div class="ct-side-card">
+            <h5 class="ct-side-card__head">Tags</h5>
+            <div class="ct-side-card__body">
+              <ul class="ct-creatif-list">
+                <li><a href="#">Couleur</a> <a class="ml-auto" href="#" style="font-size:.8rem">Modifier</a></li>
+                <li><a href="#">Géométrie</a> <a class="ml-auto" href="#" style="font-size:.8rem">Modifier</a></li>
+                <li><a href="#">Vintage</a> <a class="ml-auto" href="#" style="font-size:.8rem">Modifier</a></li>
+                <li><a href="#">Abstract</a> <a class="ml-auto" href="#" style="font-size:.8rem">Modifier</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 ct-footer mt-5">
+      <div class="container">
+        <p class="m-0 text-center text-white">
+          CREA'TIFS &copy; 2026 — EAFC Charlemagne | <a href="login.html">Administration</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

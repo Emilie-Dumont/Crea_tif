@@ -1,0 +1,2 @@
+<?php
+$content = "Routeur OK";

@@ -1,0 +1,16 @@
+RewriteEngine on
+
+# --------------------------------------------
+# Fichiers ou dossiers réels (css, js, images...) : pas de réécriture
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# --------------------------------------------
+# RÈGLES DE RÉÉCRITURE
+# (les routes viendront ici)
+
+# --------------------------------------------
+# FALLBACK
+# Toute autre URL part vers le front controller
+RewriteRule ^ index.php [L]

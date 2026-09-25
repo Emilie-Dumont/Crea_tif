@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="CREA'TIFS - ajouter ou modifier un projet" />
+    <meta name="author" content="" />
+
+    <title>Ajouter un projet — CREA'TIFS</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Polices Bungee + Poppins : auto-hébergées, voir css/creatifs.css -->
+
+    <!-- Styles CREA'TIFS -->
+    <link href="css/creatifs.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top ct-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <svg class="ct-scissors" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="6" cy="6" r="2.6"></circle>
+            <circle cx="6" cy="18" r="2.6"></circle>
+            <line x1="20" y1="3" x2="8" y2="15.5"></line>
+            <line x1="8" y1="8.5" x2="20" y2="21"></line>
+          </svg>
+          CREA'TIFS
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Les projets</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contenu -->
+    <div class="container" style="margin-top: 2.5rem">
+      <div class="row">
+        <!-- Colonne principale -->
+        <div class="col-lg-8 py-3">
+          <!--
+            Ce même gabarit visuel sert à la fois pour :
+            /projects/add/form.html          (ajout — champs vides)
+            /projets/id/slug/edit/form.html  (modification — champs pré-remplis par le contrôleur)
+          -->
+          <h1 class="mb-4">Ajouter un projet</h1>
+
+          <form action="" method="post" enctype="multipart/form-data" class="ct-form-card">
+            <label for="title">Titre du projet</label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              class="form-control"
+              placeholder="Ex : Frange Kamikaze"
+            />
+
+            <label for="text">Description</label>
+            <textarea
+              id="text"
+              name="text"
+              class="form-control"
+              rows="5"
+              placeholder="Racontez l'histoire (courageuse) de ce projet..."
+            ></textarea>
+
+            <label for="creatif-file">Photo du résultat</label>
+            <div class="ct-dropzone">
+              ✂️ Glissez une image ou choisissez-la ci-dessous
+              <input
+                type="file"
+                class="form-control-file"
+                id="creatif-file"
+                name="image"
+              />
+            </div>
+
+            <label for="category">Créa'tif</label>
+            <select id="category" name="category_id" class="form-control">
+              <option disabled selected>Sélectionnez le créa'tif</option>
+              <option value="1">Mister Univ'Hair</option>
+              <option value="2">Leerdam'Hair</option>
+              <option value="3">Séda'Tifs</option>
+              <option value="4">Jupil'Hair</option>
+            </select>
+
+            <label>Tags <span style="font-weight:400;font-size:.8rem;color:#4a3a5a">(facultatif)</span></label>
+            <div class="ct-tag-choice">
+              <label><input type="checkbox" name="tags[]" value="1" /> Vintage</label>
+              <label><input type="checkbox" name="tags[]" value="2" /> Alimentation</label>
+              <label><input type="checkbox" name="tags[]" value="3" /> Géométrie</label>
+              <label><input type="checkbox" name="tags[]" value="4" /> Couleur</label>
+              <label><input type="checkbox" name="tags[]" value="5" /> Figuratif</label>
+              <label><input type="checkbox" name="tags[]" value="6" /> Baptême</label>
+              <label><input type="checkbox" name="tags[]" value="7" /> Abstract</label>
+              <label><input type="checkbox" name="tags[]" value="8" /> Inclassable</label>
+            </div>
+
+            <div>
+              <input class="ct-btn ct-btn--primary" type="submit" value="Enregistrer" />
+              <input class="ct-btn ct-btn--ghost" type="reset" value="Réinitialiser" />
+            </div>
+          </form>
+        </div>
+
+        <!-- Colonne latérale -->
+        <div class="col-lg-4 py-3">
+          <div class="ct-side-card">
+            <h5 class="ct-side-card__head">Les créa'tifs</h5>
+            <div class="ct-side-card__body">
+              <ul class="ct-creatif-list">
+                <li>
+                  <img class="ct-avatar" src="images/creatif_1.jpg" alt="" />
+                  <a href="#">Mister Univ'Hair</a>
+                  <span class="ct-count">4</span>
+                </li>
+                <li>
+                  <img class="ct-avatar" src="images/creatif_2.jpg" alt="" />
+                  <a href="#">Leerdam'Hair</a>
+                  <span class="ct-count">12</span>
+                </li>
+                <li>
+                  <img class="ct-avatar" src="images/creatif_3.jpeg" alt="" />
+                  <a href="#">Séda'Tifs</a>
+                  <span class="ct-count">9</span>
+                </li>
+                <li>
+                  <img class="ct-avatar" src="images/creatif_4.jpg" alt="" />
+                  <a href="#">Jupil'Hair</a>
+                  <span class="ct-count">5</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 ct-footer mt-5">
+      <div class="container">
+        <p class="m-0 text-center text-white">
+          CREA'TIFS &copy; 2026 — EAFC Charlemagne | <a href="login.html">Administration</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
