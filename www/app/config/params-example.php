@@ -4,6 +4,7 @@
 // Initialiser les zones dynamiques
 $title = "";
 $content = "Oups, il semble y avoir un problème.";
+$hero = false; // Bandeau d'intro affiché uniquement sur l'accueil
 
 //Pourquoi initialiser $content ici ? Si aucune route ne remplit $content, le template affichera ce message plutôt que de planter sur une variable inexistante.
 

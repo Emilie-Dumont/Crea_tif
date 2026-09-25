@@ -2,12 +2,22 @@
 <html lang="fr">
 
 <head>
-    <meta charset="utf-8">
-    <title>Test</title>
+    <?php include '../app/views/templates/partials/_head.php'; ?>
 </head>
 
 <body>
-    <?php echo $content; ?>
+
+    <?php include '../app/views/templates/partials/_nav.php'; ?>
+
+    <?php // Bandeau d'intro : uniquement sur la page d'accueil
+    if ($hero) include '../app/views/templates/partials/_hero.php'; ?>
+
+    <?php include '../app/views/templates/partials/_main.php'; ?>
+
+    <?php include '../app/views/templates/partials/_footer.php'; ?>
+
+    <?php include '../app/views/templates/partials/_scripts.php'; ?>
+
 </body>
 
 </html>
