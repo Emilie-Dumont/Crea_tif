@@ -8,7 +8,16 @@ RewriteRule ^ - [L]
 
 # --------------------------------------------
 # RÈGLES DE RÉÉCRITURE
-# (les routes viendront ici)
+
+# ROUTE PROJETS.INDEX (accueil)
+# PATTERN: /
+# URL: http://localhost/script_server/Crea_tif/www/public/
+RewriteRule ^$ index.php?ressource=projets [L,QSA]
+
+# ROUTE PROJETS.INDEX
+# PATTERN: /projects
+# URL: http://localhost/script_server/Crea_tif/www/public/projects
+RewriteRule ^projects/?$ index.php?ressource=projets [L,QSA]
 
 # --------------------------------------------
 # FALLBACK
