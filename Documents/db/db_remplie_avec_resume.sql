@@ -1,0 +1,1 @@
+SELECT * FROM creatifs.projets_has_tags;
