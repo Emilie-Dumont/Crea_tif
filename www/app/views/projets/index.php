@@ -8,18 +8,21 @@
 <!-- VUE : liste des projets (accueil) -->
 
 <?php foreach ($projets as $projet): ?>
+    <?php // Route de détail : /projects/id/slug.html (le slug est calculé à partir du titre) 
+    ?>
+    <?php $lienDetail = 'projects/' . $projet['id'] . '/' . \Core\Helpers\slugify($projet['titre']) . '.html'; ?>
     <article class="ct-card">
         <div class="row">
             <div class="col-md-4">
-                <a href="projet.html">
+                <a href="<?php echo $lienDetail; ?>">
                     <img class="img-fluid mb-3 mb-md-0" src="images/<?php echo $projet['image']; ?>" alt=" <?php echo $projet['titre']; ?>" />
                 </a>
             </div>
             <div class="col-md-8">
-                <h3><a href="projet.html"><?php echo $projet['titre']; ?></a></h3>
+                <h3><a href="<?php echo $lienDetail; ?>"><?php echo $projet['titre']; ?></a></h3>
                 <p class="ct-byline">par <a href="#">Mister Univ'Hair</a> · 17 août 2017</p>
                 <p><?php echo \Core\Helpers\truncate($projet['resume'], 100); ?></p>
-                <a class="ct-btn ct-btn--primary ct-btn--sm" href="projet.html">Voir le projet</a>
+                <a class="ct-btn ct-btn--primary ct-btn--sm" href="<?php echo $lienDetail; ?>">Voir le projet</a>
             </div>
         </div>
     </article>
