@@ -4,6 +4,8 @@ namespace App\Controllers\ProjetsController;
 
 use \PDO;
 use \App\Models\ProjetsModel;
+use \App\Models\CreatifsModel;
+use \App\Models\TagsModel;
 
 /**
  * Affiche la liste des projets, 10 par page.
@@ -47,8 +49,11 @@ function indexAction(PDO $connexion)
 function showAction(PDO $connexion, int $id)
 {
     include_once '../app/models/projetsModel.php';
+    include_once '../app/models/creatifsModel.php';
+    include_once '../app/models/tagsModel.php';
 
     $projet = ProjetsModel\findOneById($connexion, $id);
+    $tags = TagsModel\findAllByProjetId($connexion, $id);
 
     global $content, $title;
 
@@ -58,6 +63,8 @@ function showAction(PDO $connexion, int $id)
         $content = '<p>Ce projet n\'existe pas.</p>';
         return;
     }
+    // Le créatif qui a réalisé ce projet (la colonne "creatif" du projet contient son id)
+    $creatif = CreatifsModel\findOneById($connexion, $projet['creatif']);
     // Le titre du projet apparaît dans l'onglet du navigateur
     $title = $projet['titre'];
 
