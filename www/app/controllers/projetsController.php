@@ -72,3 +72,23 @@ function showAction(PDO $connexion, int $id)
     include '../app/views/projets/show.php';
     $content = ob_get_clean();
 }
+
+/**
+ * Affiche le formulaire d'ajout d'un projet (champs vides).
+ * Les créa'tifs alimentent le menu déroulant, les tags les cases à cocher.
+ */
+function addFormAction(PDO $connexion)
+{
+    include_once '../app/models/creatifsModel.php';
+    include_once '../app/models/tagsModel.php';
+
+    $creatifs = CreatifsModel\findAll($connexion);
+    $tags = TagsModel\findAll($connexion);
+
+    global $content, $title;
+    $title = 'Ajouter un projet';
+
+    ob_start();
+    include '../app/views/projets/form.php';
+    $content = ob_get_clean();
+}

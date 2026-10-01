@@ -36,3 +36,17 @@ ORDER BY creatifs.id;";
     $rs = $connexion->query($sql);
     return $rs->fetchAll(PDO::FETCH_ASSOC);
 }
+
+/**
+ * Récupère tous les créatifs, dans l'ordre de leur id.
+ * Sert au menu déroulant du formulaire d'ajout / modification.
+ */
+function findAll(PDO $connexion): array
+{
+    $sql = "SELECT *
+FROM creatifs
+ORDER BY id;";
+
+    $rs = $connexion->query($sql);
+    return $rs->fetchAll(PDO::FETCH_ASSOC);
+}
