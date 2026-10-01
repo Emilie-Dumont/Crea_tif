@@ -8,12 +8,14 @@ use \PDO;
  * Récupère une page de projets, du plus récent au plus ancien.
  * $limit  : nombre de projets à renvoyer
  * $offset : nombre de projets à sauter avant de commencer
+ * Chaque projet contient aussi le pseudo de son créatif (colonne creatifPseudo).
  */
 function findAll(PDO $connexion, int $limit = 10, int $offset = 0): array
 {
-    $sql = "SELECT *
+    $sql = "SELECT projets.*, creatifs.pseudo AS creatifPseudo
 FROM projets
-ORDER BY dateCreation DESC, id DESC
+INNER JOIN creatifs ON creatifs.id = projets.creatif
+ORDER BY projets.dateCreation DESC, projets.id DESC
 LIMIT :limit OFFSET :offset;";
 
     $rs = $connexion->prepare($sql);

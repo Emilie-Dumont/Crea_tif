@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-8">
                 <h3><a href="<?php echo $lienDetail; ?>"><?php echo $projet['titre']; ?></a></h3>
-                <p class="ct-byline">par <a href="#">Mister Univ'Hair</a> · 17 août 2017</p>
+                <p class="ct-byline">par <a href="#"><?php echo $projet['creatifPseudo']; ?></a> · <?php echo date('d/m/Y', strtotime($projet['dateCreation'])); ?></p>
                 <p><?php echo \Core\Helpers\truncate($projet['resume'], 100); ?></p>
                 <a class="ct-btn ct-btn--primary ct-btn--sm" href="<?php echo $lienDetail; ?>">Voir le projet</a>
             </div>
