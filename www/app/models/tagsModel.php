@@ -53,3 +53,18 @@ VALUES (:projet, :tag);";
         $rs->execute();
     }
 }
+
+/**
+ * Supprime tous les liens d'un projet avec ses tags (lignes de projets_has_tags).
+ * Sert à la modification (on efface les anciens tags puis on réinsère les nouveaux)
+ * et à la suppression d'un projet. Les tags eux-mêmes (table tags) ne sont pas touchés.
+ */
+function deleteByProjetId(PDO $connexion, int $projetId): void
+{
+    $sql = "DELETE FROM projets_has_tags
+WHERE projet = :projet;";
+
+    $rs = $connexion->prepare($sql);
+    $rs->bindValue(':projet', $projetId, PDO::PARAM_INT);
+    $rs->execute();
+}

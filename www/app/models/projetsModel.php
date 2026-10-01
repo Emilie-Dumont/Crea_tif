@@ -70,3 +70,42 @@ VALUES (:titre, :resume, :texte, NOW(), :image, :creatif);";
     $rs->execute();
     return (int) $connexion->lastInsertId();
 }
+
+/**
+ * Modifie un projet existant, repéré par son id.
+ * La date de création n'est pas touchée : elle reste celle de l'ajout.
+ */
+function updateOne(PDO $connexion, int $id, string $titre, string $resume, string $texte, string $image, int $creatif): void
+{
+    $sql = "UPDATE projets
+SET titre = :titre,
+    resume = :resume,
+    texte = :texte,
+    image = :image,
+    creatif = :creatif
+WHERE id = :id;";
+
+    $rs = $connexion->prepare($sql);
+    $rs->bindValue(':titre', $titre, PDO::PARAM_STR);
+    $rs->bindValue(':resume', $resume, PDO::PARAM_STR);
+    $rs->bindValue(':texte', $texte, PDO::PARAM_STR);
+    $rs->bindValue(':image', $image, PDO::PARAM_STR);
+    $rs->bindValue(':creatif', $creatif, PDO::PARAM_INT);
+    $rs->bindValue(':id', $id, PDO::PARAM_INT);
+    $rs->execute();
+}
+
+/**
+ * Supprime un projet, repéré par son id.
+ * Attention : ses liens avec les tags (table projets_has_tags) doivent être supprimés AVANT,
+ * sinon la base refuse (clé étrangère).
+ */
+function deleteOne(PDO $connexion, int $id): void
+{
+    $sql = "DELETE FROM projets
+WHERE id = :id;";
+
+    $rs = $connexion->prepare($sql);
+    $rs->bindValue(':id', $id, PDO::PARAM_INT);
+    $rs->execute();
+}

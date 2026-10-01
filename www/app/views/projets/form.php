@@ -1,22 +1,25 @@
 <?php
 
 /**
- * @var array  $creatifs     les créa'tifs, pour le menu déroulant
- * @var array  $tags         tous les tags, pour les cases à cocher
- * @var array  $errors       les messages d'erreur (tableau vide si tout va bien)
- * @var string $titre        titre saisi (vide au premier affichage)
- * @var string $resume       résumé saisi
- * @var string $texte        description saisie
- * @var int    $creatifChoisi id du créa'tif choisi (0 = aucun)
- * @var array  $tagsCoches   id des tags cochés
+ * @var array       $creatifs      les créa'tifs, pour le menu déroulant
+ * @var array       $tags          tous les tags, pour les cases à cocher
+ * @var string      $formAction    adresse où le formulaire est envoyé (ajout ou modification)
+ * @var string      $formTitre     titre de la page
+ * @var array       $errors        les messages d'erreur (tableau vide si tout va bien)
+ * @var string      $titre         titre saisi (vide au premier affichage de l'ajout)
+ * @var string      $resume        résumé saisi
+ * @var string      $texte         description saisie
+ * @var int         $creatifChoisi id du créa'tif choisi (0 = aucun)
+ * @var array       $tagsCoches    id des tags cochés
+ * @var string|null $imageActuelle nom de l'image actuelle du projet (null à l'ajout)
  */ ?>
 <!-- VUE : formulaire d'un projet -->
 <!--
-    Ce même gabarit servira pour :
+    Ce même gabarit sert pour :
     /projects/add/form.html            (ajout : champs vides)
     /projects/id/slug/edit/form.html   (modification : champs pré-remplis par le contrôleur)
 -->
-<h1 class="mb-4">Ajouter un projet</h1>
+<h1 class="mb-4"><?php echo $formTitre; ?></h1>
 
 <!-- Messages d'erreur : affichés seulement s'il y en a (alerte rouge Bootstrap) -->
 <?php if (!empty($errors)): ?>
@@ -30,7 +33,7 @@
 <?php endif; ?>
 
 <!-- method="post" : les données partent dans le corps de la requête (pas dans l'URL) ; enctype="multipart/form-data" : obligatoire pour envoyer un fichier -->
-<form action="projects/add/insert.html" method="post" enctype="multipart/form-data" class="ct-form-card">
+<form action="<?php echo $formAction; ?>" method="post" enctype="multipart/form-data" class="ct-form-card">
     <label for="titre">Titre du projet</label>
     <!-- htmlspecialchars : neutralise les caractères spéciaux (guillemets, <, >) de ce que l'utilisateur a tapé avant de le remettre dans le HTML -->
     <input
@@ -61,6 +64,13 @@
 
     <label for="image">Photo du résultat</label>
     <div class="ct-dropzone">
+        <!-- Modification seulement : on montre l'image actuelle, et en choisir une autre est facultatif -->
+        <?php if ($imageActuelle !== null): ?>
+            <img src="images/<?php echo $imageActuelle; ?>" alt="Image actuelle" class="img-fluid mb-2" style="max-height:120px" />
+            <br />
+            Image actuelle : choisissez un fichier seulement pour la remplacer
+            <br />
+        <?php endif; ?>
         ✂️ Glissez une image ou choisissez-la ci-dessous
         <input
             type="file"

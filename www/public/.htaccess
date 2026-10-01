@@ -34,6 +34,21 @@ RewriteRule ^projects/add/form\.html$ index.php?ressource=projets&action=addForm
 # URL: http://localhost/script_server/Crea_tif/www/public/projects/add/insert.html
 RewriteRule ^projects/add/insert\.html$ index.php?ressource=projets&action=addInsert [L,QSA]
 
+# ROUTE PROJETS.EDITFORM
+# PATTERN: /projects/id/slug/edit/form.html
+# URL: http://localhost/script_server/Crea_tif/www/public/projects/12/mon-titre/edit/form.html
+RewriteRule ^projects/([0-9]+)/([^/]+)/edit/form\.html$ index.php?ressource=projets&action=editForm&id=$1 [L,QSA]
+
+# ROUTE PROJETS.EDITUPDATE
+# PATTERN: /projects/id/slug/edit/update.html
+# URL: http://localhost/script_server/Crea_tif/www/public/projects/12/mon-titre/edit/update.html
+RewriteRule ^projects/([0-9]+)/([^/]+)/edit/update\.html$ index.php?ressource=projets&action=editUpdate&id=$1 [L,QSA]
+
+# ROUTE PROJETS.DELETE
+# PATTERN: /projects/delete/id/slug.html
+# URL: http://localhost/script_server/Crea_tif/www/public/projects/delete/12/mon-titre.html
+RewriteRule ^projects/delete/([0-9]+)/([^/]+)\.html$ index.php?ressource=projets&action=delete&id=$1 [L,QSA]
+
 # --------------------------------------------
 # FALLBACK
 # Toute autre URL part vers le front controller
