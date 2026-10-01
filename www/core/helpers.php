@@ -29,23 +29,29 @@ function slugify(string $texte): string
 /**
  * Tronque un texte à $longueur caractères, en coupant à l'espace
  * juste avant le $longueur-ème caractère, et ajoute "..." si le texte
- * a été raccourci.
+ * a été raccourci. Si le texte coupé se termine par une ponctuation
+ * (. , ; : ! ?), on la supprime avant d'ajouter "...".
  */
 function truncate(string $texte, int $longueur): string
 {
+    // Texte assez court : on le renvoie tel quel
     if (mb_strlen($texte) <= $longueur) {
         return $texte;
     }
 
+    // On garde les $longueur premiers caractères
     $tronque = mb_substr($texte, 0, $longueur);
 
+    // On recule jusqu'au dernier espace pour ne pas couper un mot en deux
+    // (s'il n'y a aucun espace, on garde les $longueur caractères tels quels)
     $position = mb_strrpos($tronque, ' ');
 
-    if ($position === false) {
-        return $tronque . '...';
+    if ($position !== false) {
+        $tronque = mb_substr($tronque, 0, $position);
     }
 
-    $tronque = mb_substr($tronque, 0, $position);
+    // rtrim enlève à la FIN de la chaîne tous les caractères de la liste donnée
+    $tronque = rtrim($tronque, '.,;:!?');
 
     return $tronque . '...';
 }
