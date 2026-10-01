@@ -19,6 +19,11 @@ RewriteRule ^$ index.php?ressource=projets [L,QSA]
 # URL: http://localhost/script_server/Crea_tif/www/public/projects
 RewriteRule ^projects/?$ index.php?ressource=projets [L,QSA]
 
+# ROUTE PROJETS.SHOW
+# PATTERN: /projects/id/slug.html
+# URL: http://localhost/script_server/Crea_tif/www/public/projects/12/mon-titre.html
+RewriteRule ^projects/([0-9]+)/([^/]+)\.html$ index.php?ressource=projets&action=show&id=$1 [L,QSA]
+
 # --------------------------------------------
 # FALLBACK
 # Toute autre URL part vers le front controller

@@ -39,3 +39,29 @@ function indexAction(PDO $connexion)
     include '../app/views/projets/index.php';
     $content = ob_get_clean();
 }
+
+/**
+ * Affiche le détail d'un projet.
+ * $id vient de l'URL (/projects/12/mon-titre.html).
+ */
+function showAction(PDO $connexion, int $id)
+{
+    include_once '../app/models/projetsModel.php';
+
+    $projet = ProjetsModel\findOneById($connexion, $id);
+
+    global $content, $title;
+
+    // Aucun projet avec cet id : on répond "404 introuvable"
+    if ($projet === null) {
+        http_response_code(404);
+        $content = '<p>Ce projet n\'existe pas.</p>';
+        return;
+    }
+    // Le titre du projet apparaît dans l'onglet du navigateur
+    $title = $projet['titre'];
+
+    ob_start();
+    include '../app/views/projets/show.php';
+    $content = ob_get_clean();
+}
