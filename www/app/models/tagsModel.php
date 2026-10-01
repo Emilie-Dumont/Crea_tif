@@ -21,3 +21,16 @@ ORDER BY tags.nom;";
     $rs->execute();
     return $rs->fetchAll(PDO::FETCH_ASSOC);
 }
+
+/**
+ * Récupère tous les tags, dans l'ordre de leur id. Sert à la sidebar.
+ */
+function findAll(PDO $connexion): array
+{
+    $sql = "SELECT *
+FROM tags
+ORDER BY id;";
+
+    $rs = $connexion->query($sql);
+    return $rs->fetchAll(PDO::FETCH_ASSOC);
+}

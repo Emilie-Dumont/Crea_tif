@@ -19,3 +19,20 @@ WHERE id = :id;";
     $rs->execute();
     return $rs->fetch(PDO::FETCH_ASSOC) ?: null;
 }
+
+/**
+ * Récupère tous les créatifs, avec le nombre de projets de chacun
+ * (colonne nbProjets). Sert à la sidebar.
+ * LEFT JOIN projets ON projets.creatif = creatifs.id : on relie chaque créatif à ses projets. Le LEFT garde aussi un créatif qui n'a aucun projet (compteur à 0).
+ */
+function findAllWithProjetsCount(PDO $connexion): array
+{
+    $sql = "SELECT creatifs.*, COUNT(projets.id) AS nbProjets
+FROM creatifs
+LEFT JOIN projets ON projets.creatif = creatifs.id
+GROUP BY creatifs.id
+ORDER BY creatifs.id;";
+
+    $rs = $connexion->query($sql);
+    return $rs->fetchAll(PDO::FETCH_ASSOC);
+}
