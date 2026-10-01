@@ -11,7 +11,7 @@ use \App\Models\TagsModel;
  * Affiche la liste des projets, 10 par page.
  * Le numéro de page vient de l'URL (?page=2).
  */
-function indexAction(PDO $connexion)
+function indexAction(PDO $connexion): void
 {
     include_once '../app/models/projetsModel.php';
 
@@ -46,7 +46,7 @@ function indexAction(PDO $connexion)
  * Affiche le détail d'un projet.
  * $id vient de l'URL (/projects/12/mon-titre.html).
  */
-function showAction(PDO $connexion, int $id)
+function showAction(PDO $connexion, int $id): void
 {
     include_once '../app/models/projetsModel.php';
     include_once '../app/models/creatifsModel.php';
