@@ -34,3 +34,22 @@ ORDER BY id;";
     $rs = $connexion->query($sql);
     return $rs->fetchAll(PDO::FETCH_ASSOC);
 }
+
+/**
+ * Associe des tags à un projet : une ligne par tag dans la table intermédiaire
+ * projets_has_tags. $tagIds est le tableau des id de tags cochés (peut être vide).
+ */
+function insertByProjetId(PDO $connexion, int $projetId, array $tagIds): void
+{
+    $sql = "INSERT INTO projets_has_tags (projet, tag)
+VALUES (:projet, :tag);";
+
+    $rs = $connexion->prepare($sql);
+
+    // La requête préparée est réutilisée pour chaque tag coché
+    foreach ($tagIds as $tagId) {
+        $rs->bindValue(':projet', $projetId, PDO::PARAM_INT);
+        $rs->bindValue(':tag', $tagId, PDO::PARAM_INT);
+        $rs->execute();
+    }
+}

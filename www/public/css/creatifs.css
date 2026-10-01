@@ -10,8 +10,9 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../fonts/bungee-latin-400-normal.woff2") format("woff2"),
-       url("../fonts/bungee-latin-400-normal.woff") format("woff");
+  src:
+    url("../fonts/bungee-latin-400-normal.woff2") format("woff2"),
+    url("../fonts/bungee-latin-400-normal.woff") format("woff");
 }
 
 @font-face {
@@ -19,8 +20,9 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url("../fonts/poppins-latin-300-normal.woff2") format("woff2"),
-       url("../fonts/poppins-latin-300-normal.woff") format("woff");
+  src:
+    url("../fonts/poppins-latin-300-normal.woff2") format("woff2"),
+    url("../fonts/poppins-latin-300-normal.woff") format("woff");
 }
 
 @font-face {
@@ -28,8 +30,9 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../fonts/poppins-latin-400-normal.woff2") format("woff2"),
-       url("../fonts/poppins-latin-400-normal.woff") format("woff");
+  src:
+    url("../fonts/poppins-latin-400-normal.woff2") format("woff2"),
+    url("../fonts/poppins-latin-400-normal.woff") format("woff");
 }
 
 @font-face {
@@ -37,8 +40,9 @@
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url("../fonts/poppins-latin-400-italic.woff2") format("woff2"),
-       url("../fonts/poppins-latin-400-italic.woff") format("woff");
+  src:
+    url("../fonts/poppins-latin-400-italic.woff2") format("woff2"),
+    url("../fonts/poppins-latin-400-italic.woff") format("woff");
 }
 
 @font-face {
@@ -46,8 +50,9 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("../fonts/poppins-latin-500-normal.woff2") format("woff2"),
-       url("../fonts/poppins-latin-500-normal.woff") format("woff");
+  src:
+    url("../fonts/poppins-latin-500-normal.woff2") format("woff2"),
+    url("../fonts/poppins-latin-500-normal.woff") format("woff");
 }
 
 @font-face {
@@ -55,8 +60,9 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("../fonts/poppins-latin-600-normal.woff2") format("woff2"),
-       url("../fonts/poppins-latin-600-normal.woff") format("woff");
+  src:
+    url("../fonts/poppins-latin-600-normal.woff2") format("woff2"),
+    url("../fonts/poppins-latin-600-normal.woff") format("woff");
 }
 
 @font-face {
@@ -64,8 +70,9 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("../fonts/poppins-latin-700-normal.woff2") format("woff2"),
-       url("../fonts/poppins-latin-700-normal.woff") format("woff");
+  src:
+    url("../fonts/poppins-latin-700-normal.woff2") format("woff2"),
+    url("../fonts/poppins-latin-700-normal.woff") format("woff");
 }
 
 /* ---- 1. Tokens : palette, typo, formes ---- */
@@ -80,7 +87,11 @@
   --pink-soft: #ffe4f2;
   --white: #ffffff;
 
-  --gradient-glam: linear-gradient(120deg, var(--magenta) 0%, var(--violet) 100%);
+  --gradient-glam: linear-gradient(
+    120deg,
+    var(--magenta) 0%,
+    var(--violet) 100%
+  );
   --gradient-gold: linear-gradient(120deg, var(--gold) 0%, var(--magenta) 100%);
 
   --radius-lg: 26px;
@@ -103,13 +114,22 @@ html {
 body {
   padding-top: 64px;
   background: var(--cream);
-  font-family: "Poppins", -apple-system, "Segoe UI", sans-serif;
+  font-family:
+    "Poppins",
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
   color: var(--ink);
   font-size: 1rem;
   line-height: 1.65;
 }
 
-h1, h2, h3, h4, h5, .ct-display {
+h1,
+h2,
+h3,
+h4,
+h5,
+.ct-display {
   font-family: "Bungee", "Poppins", sans-serif;
   font-weight: 400;
   letter-spacing: 0.3px;
@@ -173,7 +193,12 @@ select:focus-visible {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(100deg, var(--gold), var(--magenta) 55%, var(--cyan));
+  background: linear-gradient(
+    100deg,
+    var(--gold),
+    var(--magenta) 55%,
+    var(--cyan)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -225,7 +250,10 @@ select:focus-visible {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1.5px, transparent 1.6px);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.35) 1.5px,
+    transparent 1.6px
+  );
   background-size: 26px 26px;
   opacity: 0.35;
   pointer-events: none;
@@ -283,7 +311,9 @@ select:focus-visible {
   box-shadow: var(--shadow-hard);
   padding: 1.5rem;
   margin-bottom: 2.5rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .ct-card:hover {
@@ -332,7 +362,9 @@ select:focus-visible {
   align-items: center;
   gap: 0.4rem;
   box-shadow: var(--shadow-hard-xs);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
 }
 
 .ct-btn:hover {
@@ -395,10 +427,18 @@ select:focus-visible {
   background: var(--pink-soft);
 }
 
-.ct-tags li:nth-child(4n+1) .ct-tag { background: var(--pink-soft); }
-.ct-tags li:nth-child(4n+2) .ct-tag { background: #ffe9ad; }
-.ct-tags li:nth-child(4n+3) .ct-tag { background: #cdeaff; }
-.ct-tags li:nth-child(4n+4) .ct-tag { background: #e2d9ff; }
+.ct-tags li:nth-child(4n + 1) .ct-tag {
+  background: var(--pink-soft);
+}
+.ct-tags li:nth-child(4n + 2) .ct-tag {
+  background: #ffe9ad;
+}
+.ct-tags li:nth-child(4n + 3) .ct-tag {
+  background: #cdeaff;
+}
+.ct-tags li:nth-child(4n + 4) .ct-tag {
+  background: #e2d9ff;
+}
 
 .ct-tag:hover {
   background: var(--ink);
@@ -551,13 +591,26 @@ select:focus-visible {
 }
 
 .ct-form-card select.form-control {
-  background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%),
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--ink) 50%),
     linear-gradient(135deg, var(--ink) 50%, transparent 50%);
-  background-position: calc(100% - 20px) center, calc(100% - 15px) center;
-  background-size: 5px 5px, 5px 5px;
+  background-position:
+    calc(100% - 20px) center,
+    calc(100% - 15px) center;
+  background-size:
+    5px 5px,
+    5px 5px;
   background-repeat: no-repeat;
   appearance: none;
   -webkit-appearance: none;
+}
+
+/* Correctif select coupé : Bootstrap 4 impose une hauteur fixe aux select
+   (selecteur très spécifique avec :not([size]):not([multiple])). Notre "height: auto"
+   plus haut perdait la bataille, donc le texte était coupé. On reprend le même
+   sélecteur pour être au moins aussi spécifique et on remet height: auto. */
+.ct-form-card select.form-control:not([size]):not([multiple]) {
+  height: auto;
 }
 
 /* Zone de dépôt fichier stylisée (input natif conservé, juste redécoré) */
@@ -615,7 +668,13 @@ select:focus-visible {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--magenta), var(--gold), var(--cyan), var(--violet));
+  background: linear-gradient(
+    90deg,
+    var(--magenta),
+    var(--gold),
+    var(--cyan),
+    var(--violet)
+  );
 }
 
 .ct-footer p a {
@@ -624,18 +683,27 @@ select:focus-visible {
 
 /* ---- 12. Responsive ---- */
 @media (max-width: 767px) {
-  .ct-hero { padding: 2.5rem 0 3rem; }
-  .ct-form-card { padding: 1.25rem; }
-  .ct-card { padding: 1.1rem; }
+  .ct-hero {
+    padding: 2.5rem 0 3rem;
+  }
+  .ct-form-card {
+    padding: 1.25rem;
+  }
+  .ct-card {
+    padding: 1.1rem;
+  }
 }
 
 /* ---- 13. Respect des préférences de mouvement réduit ---- */
 @media (prefers-reduced-motion: reduce) {
-  .ct-card, .ct-btn, html {
+  .ct-card,
+  .ct-btn,
+  html {
     transition: none !important;
     scroll-behavior: auto !important;
   }
-  .ct-card img, .ct-card:nth-of-type(even) img {
+  .ct-card img,
+  .ct-card:nth-of-type(even) img {
     transform: none;
   }
 }

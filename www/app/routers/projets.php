@@ -21,6 +21,15 @@ switch ($_GET['action'] ?? null) {
         \App\Controllers\ProjetsController\addFormAction($connexion);
         break;
 
+    case 'addInsert':
+        // ROUTE PROJETS.ADDINSERT
+        // PATTERN: /projects/add/insert.html
+        // URL: http://localhost/script_server/Crea_tif/www/public/projects/add/insert.html
+        // CTRL: projets
+        // ACTION: addInsert
+        \App\Controllers\ProjetsController\addInsertAction($connexion);
+        break;
+
     default:
         // ROUTE PROJETS.INDEX
         // PATTERN: /projects

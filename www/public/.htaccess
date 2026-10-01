@@ -29,6 +29,11 @@ RewriteRule ^projects/([0-9]+)/([^/]+)\.html$ index.php?ressource=projets&action
 # URL: http://localhost/script_server/Crea_tif/www/public/projects/add/form.html
 RewriteRule ^projects/add/form\.html$ index.php?ressource=projets&action=addForm [L,QSA]
 
+# ROUTE PROJETS.ADDINSERT
+# PATTERN: /projects/add/insert.html
+# URL: http://localhost/script_server/Crea_tif/www/public/projects/add/insert.html
+RewriteRule ^projects/add/insert\.html$ index.php?ressource=projets&action=addInsert [L,QSA]
+
 # --------------------------------------------
 # FALLBACK
 # Toute autre URL part vers le front controller

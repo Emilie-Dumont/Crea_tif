@@ -51,3 +51,22 @@ WHERE id = :id;";
     $rs->execute();
     return $rs->fetch(PDO::FETCH_ASSOC) ?: null;
 }
+
+/**
+ * Insère un nouveau projet en base (la date de création est celle du moment : NOW()).
+ * Renvoie l'id du projet créé, pour pouvoir lui associer ses tags.
+ */
+function insertOne(PDO $connexion, string $titre, string $resume, string $texte, string $image, int $creatif): int
+{
+    $sql = "INSERT INTO projets (titre, resume, texte, dateCreation, image, creatif)
+VALUES (:titre, :resume, :texte, NOW(), :image, :creatif);";
+
+    $rs = $connexion->prepare($sql);
+    $rs->bindValue(':titre', $titre, PDO::PARAM_STR);
+    $rs->bindValue(':resume', $resume, PDO::PARAM_STR);
+    $rs->bindValue(':texte', $texte, PDO::PARAM_STR);
+    $rs->bindValue(':image', $image, PDO::PARAM_STR);
+    $rs->bindValue(':creatif', $creatif, PDO::PARAM_INT);
+    $rs->execute();
+    return (int) $connexion->lastInsertId();
+}

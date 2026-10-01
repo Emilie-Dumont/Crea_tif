@@ -49,3 +49,63 @@ function truncate(string $texte, int $longueur): string
 
     return $tronque . '...';
 }
+
+/**
+ * Vérifie une image envoyée par un formulaire ($_FILES['image']).
+ * Renvoie un message d'erreur (texte) si l'image est refusée,
+ * ou null si tout est bon. N'enregistre rien : c'est uploadImage() qui s'en charge.
+ */
+function getImageError(array $fichier): ?string
+{
+    // Aucun champ image reçu, ou aucun fichier choisi dans le formulaire
+    if (!isset($fichier['error']) || $fichier['error'] === UPLOAD_ERR_NO_FILE) {
+        return 'Une image est obligatoire.';
+    }
+
+    // Fichier plus gros que la limite de PHP (upload_max_filesize) ou du formulaire
+    if ($fichier['error'] === UPLOAD_ERR_INI_SIZE || $fichier['error'] === UPLOAD_ERR_FORM_SIZE) {
+        return 'L\'image est trop lourde (2 Mo maximum).';
+    }
+
+    // Toute autre erreur d'envoi
+    if ($fichier['error'] !== UPLOAD_ERR_OK) {
+        return 'L\'envoi de l\'image a échoué, veuillez réessayer.';
+    }
+
+    // L'extension doit être celle d'une image
+    $extension = strtolower(pathinfo($fichier['name'], PATHINFO_EXTENSION));
+    if (!in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp'], true)) {
+        return 'L\'image doit être au format jpg, jpeg, png, gif ou webp.';
+    }
+
+    return null;
+}
+
+/**
+ * Enregistre une image envoyée par un formulaire ($_FILES['image']) dans le dossier $dossier.
+ * Renvoie le nom unique du fichier enregistré (ex. 66ff1a2b3c4d5.jpg),
+ * ou null si aucune image valide n'a été envoyée.
+ */
+function uploadImage(array $fichier, string $dossier): ?string
+{
+    // 1. un fichier a-t-il bien été envoyé, sans erreur ?
+    if (!isset($fichier['error']) || $fichier['error'] !== UPLOAD_ERR_OK) {
+        return null;
+    }
+
+    // 2. l'extension doit être celle d'une image
+    $extension = strtolower(pathinfo($fichier['name'], PATHINFO_EXTENSION));
+    if (!in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp'], true)) {
+        return null;
+    }
+
+    // 3. nom unique (évite d'écraser une image existante, et reste court : la colonne en base fait 45 caractères)
+    $nom = uniqid() . '.' . $extension;
+
+    // 4. on déplace le fichier du dossier temporaire vers le dossier final
+    if (!move_uploaded_file($fichier['tmp_name'], $dossier . $nom)) {
+        return null;
+    }
+
+    return $nom;
+}
