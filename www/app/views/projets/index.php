@@ -1,3 +1,6 @@
+<?php
+
+/** @var array $projets */ ?>
 <!-- VUE : liste des projets (accueil) -->
 <!-- Pour l'instant statique : deviendra dynamique à l'étape 4 -->
 
@@ -13,7 +16,7 @@
             <div class="col-md-8">
                 <h3><a href="projet.html"><?php echo $projet['titre']; ?></a></h3>
                 <p class="ct-byline">par <a href="#">Mister Univ'Hair</a> · 17 août 2017</p>
-                <p><?php echo \Core\Helpers\truncate($projet['texte'], 100); ?></p>
+                <p><?php echo \Core\Helpers\truncate($projet['resume'], 100); ?></p>
                 <a class="ct-btn ct-btn--primary ct-btn--sm" href="projet.html">Voir le projet</a>
             </div>
         </div>
