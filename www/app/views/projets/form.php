@@ -32,7 +32,7 @@
     </div>
 <?php endif; ?>
 
-<!-- method="post" : les données partent dans le corps de la requête (pas dans l'URL) ; enctype="multipart/form-data" : obligatoire pour envoyer un fichier -->
+<!-- method="post" : les données partent dans le corps de la requête (pas dans l'URL) ; enctype="multipart/form-data" : obligatoire pour envoyer un fichier Sans lui, le navigateur n'envoie que le nom de l'image, pas son contenu, et $_FILES reste vide.-->
 <form action="<?php echo $formAction; ?>" method="post" enctype="multipart/form-data" class="ct-form-card">
     <label for="titre">Titre du projet</label>
     <!-- htmlspecialchars : neutralise les caractères spéciaux (guillemets, <, >) de ce que l'utilisateur a tapé avant de le remettre dans le HTML -->

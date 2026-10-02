@@ -28,6 +28,8 @@ LIMIT :limit OFFSET :offset;";
 /**
  * Compte le nombre total de projets (sert à calculer le nombre de pages). ici il y a 30 projets donc il y aura 3 pages de 10 projets mais si il y a 31 projets il y aura 3 pages de 10 projets et 1 page avec 1 projet...
  */
+
+/*fetchColumn() récupère une seule valeur (la première colonne de la première ligne), ici ce nombre.*/
 function countAll(PDO $connexion): int
 {
     $sql = "SELECT COUNT(*) FROM projets;";
