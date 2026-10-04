@@ -32,8 +32,8 @@
     </div>
 <?php endif; ?>
 
-<!-- method="post" : les données partent dans le corps de la requête (pas dans l'URL) ; enctype="multipart/form-data" : obligatoire pour envoyer un fichier Sans lui, le navigateur n'envoie que le nom de l'image, pas son contenu, et $_FILES reste vide.-->
-<form action="<?php echo $formAction; ?>" method="post" enctype="multipart/form-data" class="ct-form-card">
+<!-- method="post" : les données partent dans le corps de la requête (pas dans l'URL) ; enctype="multipart/form-data" : obligatoire pour envoyer un fichier -->
+<form action="<?php echo htmlspecialchars($formAction); ?>" method="post" enctype="multipart/form-data" class="ct-form-card">
     <label for="titre">Titre du projet</label>
     <!-- htmlspecialchars : neutralise les caractères spéciaux (guillemets, <, >) de ce que l'utilisateur a tapé avant de le remettre dans le HTML -->
     <input
@@ -84,7 +84,7 @@
         <!-- Le texte d'invite n'est présélectionné que si aucun créa'tif n'a été choisi -->
         <option disabled <?php echo $creatifChoisi === 0 ? 'selected' : ''; ?>>Sélectionnez le créa'tif</option>
         <?php foreach ($creatifs as $creatif): ?>
-            <option value="<?php echo $creatif['id']; ?>" <?php echo $creatifChoisi === (int) $creatif['id'] ? 'selected' : ''; ?>><?php echo $creatif['pseudo']; ?></option>
+            <option value="<?php echo $creatif['id']; ?>" <?php echo $creatifChoisi === (int) $creatif['id'] ? 'selected' : ''; ?>><?php echo htmlspecialchars($creatif['pseudo']); ?></option>
         <?php endforeach; ?>
     </select>
 
@@ -92,7 +92,7 @@
     <div class="ct-tag-choice">
         <?php foreach ($tags as $tag): ?>
             <!-- in_array : la case est cochée si l'id du tag est dans la liste des tags déjà cochés -->
-            <label><input type="checkbox" name="tags[]" value="<?php echo $tag['id']; ?>" <?php echo in_array((int) $tag['id'], $tagsCoches, true) ? 'checked' : ''; ?> /> <?php echo $tag['nom']; ?></label>
+            <label><input type="checkbox" name="tags[]" value="<?php echo $tag['id']; ?>" <?php echo in_array((int) $tag['id'], $tagsCoches, true) ? 'checked' : ''; ?> /> <?php echo htmlspecialchars($tag['nom']); ?></label>
         <?php endforeach; ?>
     </div>
 

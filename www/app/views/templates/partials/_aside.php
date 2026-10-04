@@ -13,7 +13,7 @@
                 <?php foreach ($asideCreatifs as $creatif): ?>
                     <li>
                         <img class="ct-avatar" src="images/<?php echo $creatif['image']; ?>" alt="" />
-                        <a href="#"><?php echo $creatif['pseudo']; ?></a>
+                        <a href="#"><?php echo htmlspecialchars($creatif['pseudo']); ?></a>
                         <span class="ct-count"><?php echo $creatif['nbProjets']; ?></span>
                     </li>
                 <?php endforeach; ?>
@@ -27,7 +27,7 @@
         <div class="ct-side-card__body">
             <ul class="ct-tags">
                 <?php foreach ($asideTags as $tag): ?>
-                    <li><a class="ct-tag" href="#"><?php echo $tag['nom']; ?></a></li>
+                    <li><a class="ct-tag" href="#"><?php echo htmlspecialchars($tag['nom']); ?></a></li>
                 <?php endforeach; ?>
             </ul>
         </div>

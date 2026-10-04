@@ -128,7 +128,7 @@ function addInsertAction(PDO $connexion): void
     include_once '../app/models/projetsModel.php';
     include_once '../app/models/tagsModel.php';
 
-    // Champs texte (trim enlève les espaces au début et à la fin)
+    // Champs texte (trim enlève les espaces au début et à la fin) on récupère les valeurs saisies par l'utilisateur dans le formulaire
     $titre = trim($_POST['titre'] ?? '');
     $resume = trim($_POST['resume'] ?? '');
     $texte = trim($_POST['texte'] ?? '');
@@ -174,7 +174,7 @@ function addInsertAction(PDO $connexion): void
         return;
     }
 
-    // Insertion du projet, puis de ses tags (on a besoin de l'id du nouveau projet)
+    // Quand tout est OK on enregistre le projet et ses tags, puis on redirige vers l'accueil (on ne peut pas afficher le détail du projet car on ne connaît pas encore son id)
     $projetId = ProjetsModel\insertOne($connexion, $titre, $resume, $texte, $image, $creatifChoisi);
     TagsModel\insertByProjetId($connexion, $projetId, $tagsCoches);
 

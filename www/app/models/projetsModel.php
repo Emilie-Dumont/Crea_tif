@@ -76,6 +76,8 @@ VALUES (:titre, :resume, :texte, NOW(), :image, :creatif);";
 /**
  * Modifie un projet existant, repéré par son id.
  * La date de création n'est pas touchée : elle reste celle de l'ajout.
+ * void car on ne renvoie rien, on ne fait que modifier le projet de base.
+ * Set les colonnes à modifier avec les nouvelles valeurs, et on précise quel projet modifier avec WHERE id = :id.
  */
 function updateOne(PDO $connexion, int $id, string $titre, string $resume, string $texte, string $image, int $creatif): void
 {

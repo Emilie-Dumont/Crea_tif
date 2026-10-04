@@ -5,7 +5,7 @@
  <meta name="description" content="CREA'TIFS - portfolio capillaire, liste des projets" />
  <meta name="author" content="" />
 
- <!-- Base des URL relatives (css, images, liens) : indispensable avec la réécriture d'URL -->
+ <!-- Base des URL relatives (css, images, liens) : indispensable avec la réécriture d'URL. tous les chemins relatifs partent de public/, ne regarde pas la barre d'adresse-->
  <base href="<?php echo PUBLIC_BASE_URL; ?>">
 
  <title>CREA'TIFS - <?php echo $title; ?></title>
