@@ -17,7 +17,7 @@ function indexAction(PDO $connexion): void
 
     $parPage = 10;
 
-    // Nombre de pages nécessaires (c'est quoi ceil () arrondi vers le haut :30 ÷ 10 = 3 pages, 31 ÷ 10 = 3,1 donc 4 pages)
+    // Nombre de pages nécessaires (c'est quoi ceil () : arrondi vers le haut :30 ÷ 10 = 3 pages, 31 ÷ 10 = 3,1 donc 4 pages)
     $totalProjets = ProjetsModel\countAll($connexion);
     $nbPages = (int) ceil($totalProjets / $parPage);
 

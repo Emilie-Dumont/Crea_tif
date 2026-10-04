@@ -78,7 +78,7 @@ function getImageError(array $fichier): ?string
         return 'L\'envoi de l\'image a échoué, veuillez réessayer.';
     }
 
-    // L'extension doit être celle d'une image
+    // L'extension doit être celle d'une image,pathinfo(..., PATHINFO_EXTENSION) récupère l'extension du nom du fichier (photo.PNG donne PNG). On ne regarde que l'extension pas ce qu'il y a dans le fichier, donc ce n'est pas 100% fiable mais suffisant pour un site perso.
     $extension = strtolower(pathinfo($fichier['name'], PATHINFO_EXTENSION));
     if (!in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp'], true)) {
         return 'L\'image doit être au format jpg, jpeg, png, gif ou webp.';
