@@ -221,7 +221,7 @@ function editFormAction(PDO $connexion, int $id): void
 }
 
 /**
- * Enregistre les modifications d'un projet, puis redirige vers sa page de détail.
+ * Enregistre les modifications d'un projet, puis redirige vers l'accueil.
  * Si le formulaire est invalide, il est réaffiché avec les messages d'erreur.
  * Différence avec l'ajout : l'image est facultative (si on n'en envoie pas, on garde l'ancienne).
  */
@@ -302,8 +302,8 @@ function editUpdateAction(PDO $connexion, int $id): void
     TagsModel\deleteByProjetId($connexion, $id);
     TagsModel\insertByProjetId($connexion, $id, $tagsCoches);
 
-    // Redirection vers la page de détail du projet modifié (le slug vient du nouveau titre)
-    header('Location: ' . PUBLIC_BASE_URL . 'projects/' . $id . '/' . \Core\Helpers\slugify($titre) . '.html');
+    // Redirection vers la page d'accueil
+    header('Location: ' . PUBLIC_BASE_URL);
     exit;
 }
 

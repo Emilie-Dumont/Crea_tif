@@ -35,11 +35,12 @@ function slugify(string $texte): string
 function truncate(string $texte, int $longueur): string
 {
     // Texte assez court : on le renvoie tel quel
+    //mb_strlen compte les caractères (et gère les accents/UTF-8).
     if (mb_strlen($texte) <= $longueur) {
         return $texte;
     }
 
-    // On garde les $longueur premiers caractères
+    // On garde les $longueur premiers caractères, mb_substr découpe le texte en tenant compte des accents et des caractères spéciaux, sans risquer de corrompre le texte ou d'afficher des caractères bizarres.
     $tronque = mb_substr($texte, 0, $longueur);
 
     // On recule jusqu'au dernier espace pour ne pas couper un mot en deux
